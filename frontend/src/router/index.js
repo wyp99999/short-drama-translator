@@ -7,20 +7,17 @@ const routes = [
   {
     path: '/',
     name: 'ProjectList',
-    component: ProjectList,
-    meta: { requiresAuth: true }
+    component: ProjectList
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login,
-    meta: { requiresGuest: true }
+    component: Login
   },
   {
     path: '/transactions',
     name: 'Transactions',
-    component: Transactions,
-    meta: { requiresAuth: true }
+    component: Transactions
   }
 ]
 
@@ -29,18 +26,10 @@ const router = createRouter({
   routes
 })
 
-// 路由守卫
+// Demo版本：移除路由守卫，直接访问
 router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token')
-  
-  // 需要登录的页面
-  if (to.meta.requiresAuth && !token) {
-    next('/login')
-    return
-  }
-  
-  // 游客页面（登录页），已登录用户跳转到首页
-  if (to.meta.requiresGuest && token) {
+  // 如果是登录页，重定向到首页（Demo不需要登录）
+  if (to.path === '/login') {
     next('/')
     return
   }

@@ -5,13 +5,10 @@ const api = axios.create({
   timeout: 30000
 })
 
-// 请求拦截器 - 添加token
+// Demo版本：移除认证拦截器
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
+    // Demo不需要token，直接返回配置
     return config
   },
   (error) => {
@@ -19,15 +16,12 @@ api.interceptors.request.use(
   }
 )
 
-// 响应拦截器 - 处理401错误
+// Demo版本：简化响应拦截器
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem('token')
-      localStorage.removeItem('user')
-      window.location.href = '/login'
-    }
+    // 只记录错误，不跳转登录页
+    console.error('API Error:', error.response?.status, error.message)
     return Promise.reject(error)
   }
 )
