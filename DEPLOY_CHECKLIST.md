@@ -52,8 +52,6 @@
    - 文件夹: `/frontend/dist`
    - 点击 Save
 
-**或者运行:** `自动部署到Vercel.bat`
-
 **预计时间:** 3-5分钟
 
 **完成后获取：**
@@ -131,9 +129,9 @@ POST   /api/tasks/:id/complete    # 任务完成
 - Vue3 文档: https://vuejs.org
 - 本项目部署指南: `部署到Vercel指南.md`
 
-### 快速脚本
-- `自动部署到Vercel.bat` - 一键部署脚本
-- `一键免费部署.bat` - 完整部署流程
+### 部署指南
+- `部署到Vercel指南.md` - 详细部署指南
+- `FREE_DEPLOY_GUIDE.md` - 免费部署方案
 
 ## 🎉 完成标志
 
